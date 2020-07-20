@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CalculationFieldComponent implements OnInit {
 
-  @Input() result: number;
+  @Input() calculationFieldText: number;
 
   constructor() { }
 

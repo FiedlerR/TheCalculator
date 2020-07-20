@@ -1,12 +1,12 @@
 <ion-app>
   <ion-header>
     <ion-toolbar>
-      <app-calculation-field></app-calculation-field>
+      <app-calculation-field [calculationFieldText]="inputString"></app-calculation-field>
     </ion-toolbar>
   </ion-header>
 
   <ion-content fullscreen="true">
-    <app-number-area></app-number-area>
+    <app-number-area (buttonClicked)="onButtonClicked($event)"></app-number-area>
   </ion-content>
 </ion-app>
 

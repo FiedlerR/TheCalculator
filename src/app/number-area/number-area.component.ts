@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-number-area',
@@ -7,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NumberAreaComponent implements OnInit {
 
+  @Output() buttonClicked = new EventEmitter<string>();
+
+
   constructor() { }
 
   ngOnInit() {}
+
+  buttonClick(button: string){
+    this.buttonClicked.emit(button);
+  }
+  
 
 }

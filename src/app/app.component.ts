@@ -21,6 +21,9 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  inputString: String = "";
+  clearTextForNextInput: boolean = false;
+
    
   initializeApp() {
     this.platform.ready().then(() => {
@@ -30,7 +33,32 @@ export class AppComponent {
     });
   }
 
-  calculateExpression(expression){
-    evaluate(expression) 
+  calculateExpression(){
+    try {
+      return evaluate(this.inputString.toString()) 
+    }
+    catch(err) {
+      this.clearTextForNextInput = true;
+      return "Error";
+    }
+
   }
+
+  onButtonClicked(button: string){
+    if(this.clearTextForNextInput){
+      this.inputString = "";
+      this.clearTextForNextInput = false;
+    }
+
+    if(button === '='){
+      this.inputString = this.calculateExpression().toString();
+    }else if(button === 'clear'){
+      this.inputString = "";
+    }else if(button === 'del'){
+      this.inputString = this.inputString.slice(0, -1) ;
+    }else{
+      this.inputString += button;
+    }
+  }
+
 }
